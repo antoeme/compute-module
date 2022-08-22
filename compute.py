@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from os import getenv
 
 URL_QUERY = "http://127.0.0.1:5003/query"
+DATI = []
 
 # load environment variables from '.env' file
 load_dotenv()
@@ -42,10 +43,20 @@ def calcoli(id):
     print ("min =",minimo)
     print("max = ", massimo)
 
-    dati = {}
-    
+    dati = {"id_sensore":id, "min":minimo, "max":massimo, "media":mean, "devs":st_dev }
+    DATI.append(dati)
+    print(DATI)
+
     
     return 'eseguiti calcoli su elementi'
+
+
+@app.route('/transfer')
+def transfer():
+    # if len(DATI) == 0:
+    #     return "errore, dati non presenti in memoria"
+    # else:
+        return (json.dumps(DATI[-1]))   #ritorna l'ultimo dizionario aggiunto
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True,port=5005)
