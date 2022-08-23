@@ -6,8 +6,8 @@ import math
 from dotenv import load_dotenv
 from os import getenv
 
-NUM_SENSORI = 4
-URL_QUERY = "http://127.0.0.1:5003/query"
+NUM_SENSORI = getenv("NUM_SENSORI") or 4
+URL_QUERY = getenv("URL_QUERY") or "http://127.0.0.1:5003/query"
 
 
 # load environment variables from '.env' file
