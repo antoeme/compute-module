@@ -1,5 +1,4 @@
 import json
-from flask import Flask,jsonify
 import requests
 import datetime
 import math
@@ -14,10 +13,7 @@ URL_QUERY = "http://127.0.0.1:5003/query"
 # load environment variables from '.env' file
 load_dotenv()
 
-app = Flask(__name__)
 
-
-@app.route('/calcoli', methods=[ 'GET','POST'])
 def calcoli():
     d = []
     for id in range(NUM_SENSORI):
@@ -53,7 +49,6 @@ def calcoli():
     
     return 'eseguiti calcoli su elementi'
 
+calcoli()
 
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True,port=5005)
