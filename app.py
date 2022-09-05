@@ -16,8 +16,8 @@ load_dotenv()
 
 def calcoli():
     d = []
-    for id in range(NUM_SENSORI):
-        row = requests.get(URL_QUERY+'/'+str(id+1))
+    for id in range(int(NUM_SENSORI)):
+        row = requests.get(str(URL_QUERY)+'/'+str(id+1))
         riga = json.dumps(row.json())
         chars = '[]'
         res = riga.translate(str.maketrans('','',chars))
